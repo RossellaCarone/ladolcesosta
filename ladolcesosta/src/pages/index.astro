@@ -8,6 +8,7 @@ import About from '../components/About.astro';
 import PhotoCarousel from '../components/PhotoCarousel.tsx';
 import Amenities from '../components/Amenities.astro';
 import Territory from '../components/Territory.astro';
+import GoogleMap from '../components/GoogleMap.astro';
 import '../styles/global.css';
 ---
 
@@ -34,6 +35,8 @@ import '../styles/global.css';
   <Amenities />
 
   <Territory />
+
+  <GoogleMap />
 
   <script>
     const revealObs = new IntersectionObserver(entries => {
