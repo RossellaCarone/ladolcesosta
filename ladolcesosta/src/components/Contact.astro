@@ -1,0 +1,46 @@
+---
+import ContactForm from './ContactForm.tsx';
+---
+
+<section id="contatti" class="py-20 md:py-28 bg-beige/40">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="text-center mb-14 reveal">
+      <h2 class="font-serif text-4xl md:text-5xl text-dark mb-4">Contattaci</h2>
+      <p class="font-sans text-earth/70 text-lg">Hai domande? Scrivici, ti risponderemo al più presto</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <!-- Form -->
+      <div class="reveal">
+        <ContactForm client:visible />
+      </div>
+
+      <!-- Info -->
+      <div class="reveal space-y-8">
+        <div>
+          <h3 class="font-serif text-xl text-dark mb-3">Indirizzo</h3>
+          <p class="font-sans text-earth/70 text-sm leading-relaxed">
+            Via Luigi Cadorna, 33 – Piano Terra<br />
+            70013 Castellana Grotte (BA)<br />
+            Italia
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-serif text-xl text-dark mb-3">Email</h3>
+          <a href="mailto:info@ladolcesosta.it" class="font-sans text-accent hover:text-earth transition-colors text-sm">
+            info@ladolcesosta.it
+          </a>
+        </div>
+
+        <div>
+          <h3 class="font-serif text-xl text-dark mb-3">Prenotazioni</h3>
+          <p class="font-sans text-earth/70 text-sm leading-relaxed">
+            Per prenotazioni dirette con conferma immediata, utilizza il nostro
+            <a href="#prenota" class="text-accent hover:text-earth transition-colors underline">widget di prenotazione</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
