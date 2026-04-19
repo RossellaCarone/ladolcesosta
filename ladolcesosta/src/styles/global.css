@@ -14,3 +14,40 @@
     overflow-x: hidden;
   }
 }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  50.1% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.8s ease-out;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out;
+}
+
+.animate-scrollLine {
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+/* Clip-path for hero image on desktop */
+@media (min-width: 1024px) {
+  .lg\:clip-diagonal {
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+  }
+}

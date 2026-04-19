@@ -1,0 +1,69 @@
+---
+const BOOKING_URL = 'https://www.booking.com/hotel/it/la-dolce-sosta-castellana-grotte.it.html';
+
+const links = [
+  { label: 'La Casa', href: '#about' },
+  { label: 'Galleria', href: '#gallery' },
+  { label: 'Servizi', href: '#services' },
+  { label: 'Territorio', href: '#territory' },
+  { label: 'Prenota', href: '#booking' },
+  { label: 'Contatti', href: '#contact' },
+];
+---
+
+<nav
+  id="main-nav"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out"
+>
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-5 lg:px-10">
+    <!-- Logo -->
+    <a href="/" class="font-serif text-2xl text-dark leading-none">
+      <span class="italic text-accent font-light">La Dolce</span>
+      <span class="font-semibold"> Sosta</span>
+    </a>
+
+    <!-- Desktop Links -->
+    <ul class="hidden lg:flex items-center gap-8">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-sm font-sans uppercase tracking-wider text-dark/70 hover:text-accent transition-colors duration-300"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA -->
+    <a
+      href={BOOKING_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hidden lg:inline-flex items-center gap-2 bg-earth text-white text-sm font-sans tracking-wide px-5 py-2.5 rounded-full hover:bg-dark transition-colors duration-300"
+    >
+      Prenota su Booking
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+    </a>
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  const onScroll = () => {
+    if (!nav) return;
+    if (window.scrollY > 40) {
+      nav.classList.add('bg-cream/95', 'backdrop-blur-md', 'border-b', 'border-beige', 'py-0');
+      nav.classList.remove('py-0');
+      const inner = nav.firstElementChild as HTMLElement;
+      if (inner) { inner.style.paddingTop = '0.75rem'; inner.style.paddingBottom = '0.75rem'; }
+    } else {
+      nav.classList.remove('bg-cream/95', 'backdrop-blur-md', 'border-b', 'border-beige');
+      const inner = nav.firstElementChild as HTMLElement;
+      if (inner) { inner.style.paddingTop = ''; inner.style.paddingBottom = ''; }
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

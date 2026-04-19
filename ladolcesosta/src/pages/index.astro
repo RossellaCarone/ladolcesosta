@@ -1,10 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import MobileMenu from '../components/MobileMenu.tsx';
+import Hero from '../components/Hero.astro';
 import '../styles/global.css';
 ---
 
 <BaseLayout>
-  <main class="flex min-h-screen items-center justify-center">
-    <h1 class="font-serif text-4xl text-dark">La Dolce Sosta — Coming Soon</h1>
-  </main>
+  <Nav />
+  <MobileMenu client:media="(max-width: 900px)" />
+  <Hero />
 </BaseLayout>

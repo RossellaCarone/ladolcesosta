@@ -1,0 +1,78 @@
+---
+const BOOKING_URL = 'https://www.booking.com/hotel/it/la-dolce-sosta-castellana-grotte.it.html';
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden bg-cream pt-20 lg:pt-0">
+  <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 px-6 lg:px-10 py-12 lg:py-0">
+
+    <!-- Left Column -->
+    <div class="flex flex-col justify-center order-2 lg:order-1">
+      <p
+        class="text-xs uppercase tracking-[0.25em] text-accent font-sans mb-5 animate-fadeUp"
+        style="animation-delay: 0.3s; animation-fill-mode: both;"
+      >
+        Castellana Grotte · Puglia
+      </p>
+
+      <h1
+        class="font-serif font-light leading-[1.08] text-dark mb-6 animate-fadeUp"
+        style="font-size: clamp(2.5rem, 5.5vw, 5.2rem); animation-delay: 0.5s; animation-fill-mode: both;"
+      >
+        Il tuo rifugio esclusivo nel cuore della <em class="text-accent">Puglia</em>
+      </h1>
+
+      <p
+        class="text-dark/70 font-sans text-base lg:text-lg leading-relaxed max-w-lg mb-10 animate-fadeUp"
+        style="animation-delay: 0.7s; animation-fill-mode: both;"
+      >
+        Un intero alloggio tutto per te, a pochi passi dalle meravigliose Grotte di Castellana e dal cuore della Valle d'Itria. 80m² di comfort autentico pugliese per 1-6 ospiti.
+      </p>
+
+      <div
+        class="flex flex-wrap gap-4 animate-fadeUp"
+        style="animation-delay: 0.9s; animation-fill-mode: both;"
+      >
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-earth text-white font-sans text-sm tracking-wide px-7 py-3.5 rounded-full hover:bg-dark transition-colors duration-300"
+        >
+          Prenota su Booking
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+        <a
+          href="#about"
+          class="inline-flex items-center gap-2 border border-earth text-earth font-sans text-sm tracking-wide px-7 py-3.5 rounded-full hover:bg-earth hover:text-white transition-colors duration-300"
+        >
+          Scopri la casa
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="relative order-1 lg:order-2 min-h-[40vh] lg:min-h-[85vh]">
+      <div class="absolute inset-0 lg:clip-diagonal overflow-hidden rounded-2xl lg:rounded-none">
+        <img
+          src="/images/842231970.jpg"
+          alt="Soggiorno con arco in pietra — La Dolce Sosta"
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-dark/40 via-transparent to-transparent" />
+      </div>
+      <!-- Overlay text -->
+      <div class="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 text-right">
+        <p class="text-white/90 font-sans text-sm tracking-wide drop-shadow-lg">
+          80m² tutti per voi — da 1 a 6 ospiti
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fadeIn" style="animation-delay: 1.5s; animation-fill-mode: both;">
+    <span class="text-dark/40 text-xs uppercase tracking-[0.2em] font-sans">Scopri</span>
+    <div class="w-px h-8 bg-dark/20 animate-scrollLine" />
+  </div>
+</section>
