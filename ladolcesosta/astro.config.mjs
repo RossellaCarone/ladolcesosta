@@ -3,9 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import preact from '@astrojs/preact';
 
 export default defineConfig({
+  base: '/ladolcesosta',
   output: 'static',
-  site: 'https://ladolcesosta.com',
-  dist: '../docs',
   integrations: [tailwind(), preact()],
   vite: {
     server: {
