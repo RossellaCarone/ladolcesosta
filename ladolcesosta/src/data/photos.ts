@@ -29,7 +29,7 @@ export const photos: Photo[] = [
   { src: '/images/842231796.jpg', alt: 'Tavolo apparecchiato — piatti, tulipani, runner', category: 'Tavola' },
   { src: '/images/842231740.jpg', alt: 'Bagno — lavabo, mobile legno, specchio', category: 'Bagno' },
   { src: '/images/842231878.jpg', alt: 'Bagno completo — doccia, WC, lavabo', category: 'Bagno' },
-  { src: '/images/842231806.jpg', alt: 'Bagno — altra angolazione, scaldasalviette', category: 'Bagno' },
+  { src: '/images/842231785.jpg', alt: 'Bagno — altra angolazione, scaldasalviette', category: 'Bagno' },
   { src: '/images/842231937.jpg', alt: 'Lampada industriale design + mensola pianta', category: 'Dettaglio' },
   { src: '/images/842231920.jpg', alt: 'Dettaglio lampada geometrica legno/ferro', category: 'Dettaglio' },
   { src: '/images/842231836.jpg', alt: 'Certificato CIS/CIN incorniciato — dati ufficiali', category: 'Documenti' },
