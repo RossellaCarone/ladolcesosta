@@ -10,6 +10,7 @@ import Amenities from '../components/Amenities.astro';
 import Territory from '../components/Territory.astro';
 import GoogleMap from '../components/GoogleMap.astro';
 import Booking from '../components/Booking.astro';
+import Reviews from '../components/Reviews.astro';
 import '../styles/global.css';
 ---
 
@@ -40,6 +41,8 @@ import '../styles/global.css';
   <GoogleMap />
 
   <Booking />
+
+  <Reviews />
 
   <script>
     const revealObs = new IntersectionObserver(entries => {
