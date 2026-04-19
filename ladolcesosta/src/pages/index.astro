@@ -6,6 +6,7 @@ import Hero from '../components/Hero.astro';
 import Stats from '../components/Stats.astro';
 import About from '../components/About.astro';
 import PhotoCarousel from '../components/PhotoCarousel.tsx';
+import Amenities from '../components/Amenities.astro';
 import '../styles/global.css';
 ---
 
@@ -28,6 +29,8 @@ import '../styles/global.css';
       </div>
     </div>
   </section>
+
+  <Amenities />
 
   <script>
     const revealObs = new IntersectionObserver(entries => {
