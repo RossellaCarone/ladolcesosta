@@ -91,20 +91,12 @@ export default function BookingWidget() {
         <p class="text-red-600 text-sm font-sans mb-4 text-center">{error}</p>
       )}
 
-      <div class="flex flex-col sm:flex-row gap-3">
-        <button
+      <button
           onClick={bookOnBooking}
-          class="flex-1 px-6 py-3.5 bg-accent text-cream font-sans font-medium rounded-xl hover:bg-earth transition-colors text-sm tracking-wide cursor-pointer"
+          class="w-full px-6 py-3.5 bg-accent text-cream font-sans font-medium rounded-xl hover:bg-earth transition-colors text-sm tracking-wide cursor-pointer"
         >
           Prenota su Booking.com
         </button>
-        <button
-          onClick={searchAirbnb}
-          class="flex-1 px-6 py-3.5 border-2 border-accent text-accent font-sans font-medium rounded-xl hover:bg-accent/10 transition-colors text-sm tracking-wide cursor-pointer"
-        >
-          Cerca su Airbnb
-        </button>
-      </div>
     </div>
   );
 }

@@ -2,21 +2,20 @@
 import BookingWidget from './BookingWidget.tsx';
 ---
 
-<section id="prenota" class="py-20 md:py-28 bg-beige/50">
+<section id="prenota" class="py-20 md:py-28 bg-earth">
   <div class="max-w-7xl mx-auto px-6 md:px-10">
     <div class="text-center mb-12 reveal">
-      <h2 class="font-serif text-4xl md:text-5xl text-dark mb-4">Prenota il tuo <em>soggiorno</em></h2>
-      <p class="font-sans text-earth/70 text-lg max-w-2xl mx-auto">
+      <h2 class="font-serif text-4xl md:text-5xl text-cream mb-4">Prenota il tuo <em>soggiorno</em></h2>
+      <p class="font-sans text-cream/70 text-lg max-w-2xl mx-auto">
         Scegli le date e prenota direttamente su Booking.com per conferma immediata e assistenza dedicata.
       </p>
     </div>
 
     <div class="reveal">
-      <BookingWidget client:visible />
+      <div class="max-w-xl mx-auto bg-cream/95 rounded-2xl p-8 shadow-xl">
+        <BookingWidget client:visible />
+      </div>
     </div>
 
-    <p class="text-center mt-8 text-earth/50 text-sm font-sans reveal">
-      Prenotando su Booking.com avrete conferma immediata e assistenza dedicata
-    </p>
   </div>
 </section>

@@ -2,10 +2,11 @@ import { useState, useEffect, useRef } from 'preact/hooks';
 import type { Place } from '../data/territory';
 import { places } from '../data/territory';
 
+const BOOKING_URL = 'https://www.booking.com/hotel/it/la-dolce-sosta-castellana-grotte.it.html';
+
 export default function TerritoryModal() {
   const [selected, setSelected] = useState<number | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -18,7 +19,6 @@ export default function TerritoryModal() {
 
   useEffect(() => {
     if (selected !== null) {
-      closeRef.current?.focus();
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -42,6 +42,7 @@ export default function TerritoryModal() {
     <div
       ref={overlayRef}
       class="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ backgroundColor: 'rgba(60,46,30,0.7)' }}
       onClick={(e) => {
         if (e.target === overlayRef.current) setSelected(null);
       }}
@@ -49,25 +50,25 @@ export default function TerritoryModal() {
       aria-modal="true"
       aria-label={place.name}
     >
-      {/* Overlay */}
-      <div class="absolute inset-0 bg-dark/70 backdrop-blur-sm" />
-
-      {/* Modal content */}
-      <div class="relative bg-cream rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto shadow-2xl">
-        {/* Gradient header */}
-        <div class="h-40 rounded-t-2xl bg-gradient-to-br from-accent/40 via-warm/30 to-sand/50 flex items-end p-6 relative">
-          <span class="absolute top-4 right-6 text-5xl opacity-30">{place.icon}</span>
-          <div>
-            <h3 class="font-serif text-3xl text-dark">{place.name}</h3>
-            <span class="font-sans text-sm text-earth/70">{place.distance} da La Dolce Sosta</span>
+      <div class="relative bg-cream rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl">
+        {/* Photo header */}
+        <div class="relative h-52 sm:h-64 overflow-hidden">
+          <img
+            src={place.image}
+            alt={place.name}
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent" />
+          <div class="absolute bottom-0 left-0 p-6">
+            <h3 class="font-serif text-2xl sm:text-3xl text-cream drop-shadow-lg">{place.name}</h3>
+            <span class="font-sans text-sm text-cream/80">{place.distance} da La Dolce Sosta</span>
           </div>
         </div>
 
         {/* Close button */}
         <button
-          ref={closeRef}
           onClick={() => setSelected(null)}
-          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-cream/80 backdrop-blur flex items-center justify-center text-earth hover:text-dark transition-colors cursor-pointer"
+          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-cream/90 flex items-center justify-center text-earth hover:text-dark transition-colors cursor-pointer shadow-md"
           aria-label="Chiudi"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
@@ -77,14 +78,14 @@ export default function TerritoryModal() {
 
         {/* Body */}
         <div class="p-6 space-y-5">
-          <p class="font-sans text-earth/80 leading-relaxed">{place.longDescription}</p>
+          <p class="font-sans text-earth/80 leading-relaxed text-[15px]">{place.longDescription}</p>
 
           {/* Tips */}
           <div>
             <h4 class="font-serif text-lg text-dark mb-3">Consigli pratici</h4>
-            <ul class="space-y-2.5">
+            <ul class="space-y-2">
               {place.tips.map((tip) => (
-                <li class="flex items-start gap-2.5 font-sans text-sm text-earth/80">
+                <li class="flex items-start gap-2 font-sans text-sm text-earth/75">
                   <span class="text-accent mt-0.5 shrink-0">→</span>
                   {tip}
                 </li>
@@ -92,27 +93,29 @@ export default function TerritoryModal() {
             </ul>
           </div>
 
-          {/* Distance */}
-          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-sand/20 font-sans text-sm text-earth/70">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 shrink-0">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 00-.879-2.121l-3.498-3.498A2.999 2.999 0 0014.024 8H12" />
-            </svg>
-            Come arrivarci: {place.distance} in auto da La Dolce Sosta
+          {/* CTA buttons */}
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-cream font-sans text-sm font-semibold hover:bg-earth transition-colors shadow-md"
+            >
+              Prenota ora
+            </a>
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-accent/40 text-accent font-sans text-sm font-medium hover:bg-accent/10 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 0115 0z" />
+              </svg>
+              Google Maps
+            </a>
           </div>
-
-          {/* Maps link */}
-          <a
-            href={mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-cream font-sans text-sm font-medium hover:bg-earth transition-colors"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 0115 0z" />
-            </svg>
-            Apri in Google Maps
-          </a>
         </div>
       </div>
     </div>

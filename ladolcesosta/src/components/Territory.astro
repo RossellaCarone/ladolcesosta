@@ -8,30 +8,24 @@ import TerritoryMapInteractive from './TerritoryMapInteractive.tsx';
   <div class="max-w-7xl mx-auto px-6 md:px-10">
     <div class="text-center mb-14 reveal">
       <h2 class="font-serif text-4xl md:text-5xl text-dark mb-4">Esplora il territorio</h2>
-      <p class="font-sans text-earth/70 text-lg">Meraviglie a pochi chilometri da La Dolce Sosta</p>
+      <p class="font-sans text-earth/70 text-lg">Meraviglie pugliesi a pochi chilometri da La Dolce Sosta</p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-12 items-start">
-      <!-- Place list (left on desktop, below on mobile) -->
+      <!-- Place list — compact 2-col grid -->
       <div class="reveal order-2 md:order-1">
-        <ul class="space-y-3">
+        <div class="grid grid-cols-2 gap-2.5">
           {places.map((place, i) => (
-            <li>
-              <button
-                class="territory-btn w-full text-left px-5 py-4 rounded-xl bg-cream/80 border border-sand/40 hover:border-accent/60 hover:shadow-md transition-all duration-300 group cursor-pointer"
-                data-index={i}
-              >
-                <div class="flex items-center justify-between">
-                  <div>
-                    <span class="font-serif text-lg text-dark group-hover:text-accent transition-colors">{place.name}</span>
-                    <p class="font-sans text-sm text-earth/60 mt-0.5">{place.shortDescription}</p>
-                  </div>
-                  <span class="font-sans text-sm text-accent font-medium whitespace-nowrap ml-4">{place.distance}</span>
-                </div>
-              </button>
-            </li>
+            <button
+              class="territory-btn text-left px-4 py-3 rounded-lg bg-cream/80 border border-sand/40 hover:border-accent/60 hover:shadow-md transition-all duration-300 group cursor-pointer"
+              data-index={i}
+            >
+              <span class="font-serif text-sm text-dark group-hover:text-accent transition-colors leading-tight block">{place.name}</span>
+              <p class="font-sans text-[11px] text-earth/60 mt-0.5 leading-snug">{place.shortDescription}</p>
+              <span class="font-sans text-xs text-accent/70 font-medium mt-1 block">{place.distance}</span>
+            </button>
           ))}
-        </ul>
+        </div>
       </div>
 
       <!-- Puglia map (interactive) -->
@@ -44,32 +38,41 @@ import TerritoryMapInteractive from './TerritoryMapInteractive.tsx';
   </div>
 </section>
 
-<TerritoryModal client:visible />
+<TerritoryModal client:load />
 
 <script>
-  document.querySelectorAll('.territory-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const index = parseInt((btn as HTMLElement).dataset.index || '0', 10);
-      window.dispatchEvent(new CustomEvent('open-territory', { detail: index }));
+  function initTerritoryButtons() {
+    const btns = document.querySelectorAll('.territory-btn');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const index = parseInt((btn as HTMLElement).dataset.index || '0', 10);
+        window.dispatchEvent(new CustomEvent('open-territory', { detail: index }));
+      });
+      btn.addEventListener('mouseenter', () => {
+        const index = parseInt((btn as HTMLElement).dataset.index || '0', 10);
+        window.dispatchEvent(new CustomEvent('territory-hover', { detail: index }));
+      });
+      btn.addEventListener('mouseleave', () => {
+        window.dispatchEvent(new CustomEvent('territory-hover', { detail: null }));
+      });
     });
-    btn.addEventListener('mouseenter', () => {
-      const index = parseInt((btn as HTMLElement).dataset.index || '0', 10);
-      window.dispatchEvent(new CustomEvent('territory-hover', { detail: index }));
-    });
-    btn.addEventListener('mouseleave', () => {
-      window.dispatchEvent(new CustomEvent('territory-hover', { detail: null }));
-    });
-  });
 
-  // Listen for map marker hover → highlight list button
-  window.addEventListener('territory-marker-hover', ((e: CustomEvent) => {
-    const index = e.detail;
-    document.querySelectorAll('.territory-btn').forEach((btn, i) => {
-      if (index === i) {
-        btn.classList.add('border-accent/60', 'shadow-md');
-      } else {
-        btn.classList.remove('border-accent/60', 'shadow-md');
-      }
-    });
-  }) as EventListener);
+    window.addEventListener('territory-marker-hover', ((e: CustomEvent) => {
+      const index = e.detail;
+      document.querySelectorAll('.territory-btn').forEach((btn, i) => {
+        if (index === i) {
+          btn.classList.add('border-accent/60', 'shadow-md');
+        } else {
+          btn.classList.remove('border-accent/60', 'shadow-md');
+        }
+      });
+    }) as EventListener);
+  }
+
+  // Ensure DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTerritoryButtons);
+  } else {
+    initTerritoryButtons();
+  }
 </script>

@@ -12,13 +12,13 @@ import { places } from '../data/territory';
  */
 const markerPositions: { x: number; y: number }[] = [
   { x: 55.0, y: 45.0 },   // Grotte di Castellana
+  { x: 60.0, y: 51.0 },   // Locorotondo
   { x: 56.5, y: 49.5 },   // Alberobello
+  { x: 58.0, y: 53.5 },   // Martina Franca
+  { x: 65.0, y: 45.5 },   // Monopoli
   { x: 62.0, y: 43.0 },   // Polignano a Mare
   { x: 72.0, y: 55.0 },   // Ostuni
-  { x: 60.0, y: 51.0 },   // Locorotondo
-  { x: 65.0, y: 45.5 },   // Monopoli
   { x: 46.8, y: 35.5 },   // Bari
-  { x: 58.0, y: 53.5 },   // Martina Franca
 ];
 
 // Castellana Grotte (La Dolce Sosta)
