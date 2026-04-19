@@ -13,31 +13,30 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'VacationRental',
   name: 'La Dolce Sosta',
-  description,
+  description: 'Casa vacanze nel centro di Castellana Grotte, Puglia. 80m², 2 camere, 1-6 ospiti.',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Via Luigi Cadorna 33',
+    streetAddress: 'Via Luigi Cadorna, 33',
     addressLocality: 'Castellana Grotte',
     postalCode: '70013',
     addressRegion: 'BA',
     addressCountry: 'IT',
   },
-  identifier: {
-    '@type': 'PropertyValue',
-    name: 'CIN',
-    value: 'IT072017C200123181',
-  },
   numberOfRooms: 2,
-  occupancy: {
-    '@type': 'QuantitativeValue',
-    minValue: 1,
-    maxValue: 6,
-  },
-  floorSize: {
-    '@type': 'QuantitativeValue',
-    value: 80,
-    unitCode: 'MTK',
-  },
+  occupancy: { '@type': 'QuantitativeValue', maxValue: 6 },
+  floorSize: { '@type': 'QuantitativeValue', value: 80, unitCode: 'MTK' },
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'WiFi', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Air conditioning', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Kitchen', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Washer', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'TV', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Pets allowed', value: true },
+  ],
+  identifier: [
+    { '@type': 'PropertyValue', name: 'CIN', value: 'IT072017C200123181' },
+    { '@type': 'PropertyValue', name: 'CIS', value: 'BA07201791000075573' },
+  ],
 };
 ---
 
@@ -69,9 +68,13 @@ const jsonLd = {
 
     <title>{title}</title>
 
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="/images/842231970.jpg" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
+    <a href="#main" class="sr-only-focusable fixed top-2 left-2 z-[9999] bg-dark text-cream px-4 py-2 rounded font-sans text-sm">Vai al contenuto</a>
     <slot />
   </body>
 </html>
