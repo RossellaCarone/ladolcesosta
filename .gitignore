@@ -1,0 +1,5 @@
+.agents/
+dedonatopsicologa/
+node_modules/
+dist/
+.astro/
