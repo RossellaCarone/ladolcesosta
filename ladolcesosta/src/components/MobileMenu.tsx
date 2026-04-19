@@ -6,6 +6,7 @@ const links = [
   { label: 'La Casa', href: '#la-casa' },
   { label: 'Galleria', href: '#galleria' },
   { label: 'Territorio', href: '#territorio' },
+  { label: 'Recensioni', href: '#recensioni' },
   { label: 'Prenota', href: '#prenota' },
   { label: 'Contatti', href: '#contatti' },
 ];

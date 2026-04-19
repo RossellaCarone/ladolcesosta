@@ -1,16 +1,57 @@
 ---
-import ReviewCarousel from './ReviewCarousel.tsx';
+import { reviews } from '../data/reviews';
+
+const review = reviews[0];
+const stars = Array.from({ length: 5 }, (_, i) => i < Math.round(review.rating / 2));
 ---
 
-<section id="recensioni" class="py-20 md:py-28 bg-cream">
-  <div class="max-w-6xl mx-auto px-6 md:px-10">
-    <div class="text-center mb-12 reveal">
-      <h2 class="font-serif text-4xl md:text-5xl text-dark mb-4">Cosa dicono i nostri <em>ospiti</em></h2>
-      <p class="font-sans text-earth/70 text-lg">Esperienze autentiche dei nostri visitatori</p>
-    </div>
+<section id="recensioni" class="py-20 md:py-28 bg-beige relative overflow-hidden">
+  <!-- Decorative large quote mark -->
+  <div class="absolute top-8 left-1/2 -translate-x-1/2 text-[12rem] md:text-[18rem] leading-none font-serif text-sand/50 select-none pointer-events-none" aria-hidden="true">
+    &ldquo;
+  </div>
 
-    <div class="reveal">
-      <ReviewCarousel client:visible />
+  <div class="max-w-3xl mx-auto px-6 md:px-10 relative z-10">
+    <div class="text-center reveal">
+      <!-- Section label -->
+      <p class="font-sans text-xs uppercase tracking-[0.3em] text-earth/60 mb-6">Dicono di noi</p>
+
+      <!-- Quote -->
+      <blockquote class="mb-10">
+        <p class="font-serif text-2xl md:text-3xl lg:text-4xl text-dark leading-relaxed italic">
+          &ldquo;{review.text}&rdquo;
+        </p>
+      </blockquote>
+
+      <!-- Author + source -->
+      <div class="flex flex-col items-center gap-4">
+        <!-- Rating -->
+        <div class="flex items-center gap-3">
+          <span class="bg-[#003580] text-white font-sans font-bold text-sm px-2.5 py-1 rounded-md">
+            {review.rating}/10
+          </span>
+          <span class="font-sans text-sm text-earth/70">{review.source}</span>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-12 h-px bg-warm"></div>
+
+        <!-- Name -->
+        <p class="font-sans text-base tracking-wide text-dark font-medium">
+          {review.author}
+        </p>
+      </div>
+
+      <!-- CTA to Booking -->
+      <a
+        href="https://www.booking.com/hotel/it/la-dolce-sosta-castellana-grotte.it.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 mt-10 font-sans text-sm text-earth/70 hover:text-accent transition-colors duration-300 underline underline-offset-4 decoration-earth/30 hover:decoration-accent"
+      >
+        Leggi tutte le recensioni su Booking.com
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </a>
     </div>
   </div>
 </section>

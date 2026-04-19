@@ -16,6 +16,7 @@ import '../styles/global.css';
 ---
 
 <BaseLayout>
+  <div id="scroll-progress"></div>
   <Nav />
   <main id="main">
   <MobileMenu client:media="(max-width: 900px)" />
@@ -38,9 +39,9 @@ import '../styles/global.css';
 
   <Territory />
 
-  <Booking />
-
   <Reviews />
+
+  <Booking />
 
   <Contact />
 
@@ -48,9 +49,27 @@ import '../styles/global.css';
   <Footer />
 
   <script>
+    // Scroll progress bar (throttled with requestAnimationFrame)
+    const progressBar = document.getElementById('scroll-progress');
+    let progressRafId: number;
+    const updateProgress = () => {
+      if (!progressBar) return;
+      if (progressRafId) return;
+      progressRafId = requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+        progressRafId = 0;
+      });
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // Reveal observer (optimized)
     const revealObs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.01, rootMargin: '0px 0px 100px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   </script>
 </BaseLayout>
