@@ -6,4 +6,12 @@ export default defineConfig({
   output: 'static',
   site: 'https://ladolcesosta.com',
   integrations: [tailwind(), preact()],
+  vite: {
+    server: {
+      watch: {
+        usePolling: true,
+        interval: 500,
+      },
+    },
+  },
 });

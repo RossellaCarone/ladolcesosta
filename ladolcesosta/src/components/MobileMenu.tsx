@@ -3,12 +3,11 @@ import { useState, useEffect } from 'preact/hooks';
 const BOOKING_URL = 'https://www.booking.com/hotel/it/la-dolce-sosta-castellana-grotte.it.html';
 
 const links = [
-  { label: 'La Casa', href: '#about' },
-  { label: 'Galleria', href: '#gallery' },
-  { label: 'Servizi', href: '#services' },
-  { label: 'Territorio', href: '#territory' },
-  { label: 'Prenota', href: '#booking' },
-  { label: 'Contatti', href: '#contact' },
+  { label: 'La Casa', href: '#la-casa' },
+  { label: 'Galleria', href: '#galleria' },
+  { label: 'Territorio', href: '#territorio' },
+  { label: 'Prenota', href: '#prenota' },
+  { label: 'Contatti', href: '#contatti' },
 ];
 
 export default function MobileMenu() {

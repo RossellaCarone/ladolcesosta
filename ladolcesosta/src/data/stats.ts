@@ -1,6 +1,6 @@
 export const stats = [
-  { value: 80, suffix: 'm²', label: 'Tutto per voi' },
+  { value: 80, suffix: 'm²', label: 'Autentico  Comfort' },
+  { value: 10, suffix: '/10', label: 'Su Booking.com' },
+  { value: 5, suffix: ' min', label: 'Dalle Grotte' },
   { value: 6, suffix: '', label: 'Ospiti max' },
-  { value: 4.9, suffix: '', label: 'Su Booking.com', decimal: true },
-  { value: 2, suffix: '', label: 'Camere da letto' },
 ];

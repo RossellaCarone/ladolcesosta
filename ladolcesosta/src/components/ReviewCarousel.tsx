@@ -4,11 +4,18 @@ import Autoplay from 'embla-carousel-autoplay';
 import { reviews } from '../data/reviews';
 import type { Review } from '../data/reviews';
 
-function Stars({ count }: { count: number }) {
+function RatingBadge({ review }: { review: Review }) {
+  if (review.source === 'Booking.com') {
+    return (
+      <span class="inline-flex items-center gap-1 bg-blue-600 text-white text-sm font-bold px-2.5 py-1 rounded-md font-sans mb-3">
+        {review.rating}/10
+      </span>
+    );
+  }
   return (
     <div class="flex gap-0.5 mb-3">
       {Array.from({ length: 5 }, (_, i) => (
-        <span key={i} class={`text-lg ${i < count ? 'text-amber-400' : 'text-sand/40'}`}>★</span>
+        <span key={i} class={`text-lg ${i < review.rating ? 'text-amber-400' : 'text-sand/40'}`}>★</span>
       ))}
     </div>
   );
@@ -23,11 +30,11 @@ function SourceBadge({ source }: { source: string }) {
   );
 }
 
-function ReviewCard({ review }: { review: Review }) {
+function ReviewCard({ review, single }: { review: Review; single?: boolean }) {
   return (
-    <div class="flex-[0_0_100%] md:flex-[0_0_50%] min-w-0 px-3">
+    <div class={single ? 'max-w-2xl mx-auto' : 'flex-[0_0_100%] md:flex-[0_0_50%] min-w-0 px-3'}>
       <div class="bg-cream/80 border border-sand/30 rounded-2xl p-6 md:p-8 h-full flex flex-col">
-        <Stars count={review.rating} />
+        <RatingBadge review={review} />
         <blockquote class="font-sans text-dark/80 text-sm md:text-base leading-relaxed flex-1 mb-4">
           "{review.text}"
         </blockquote>
@@ -48,7 +55,7 @@ export default function ReviewCarousel() {
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
   const init = useCallback((node: HTMLDivElement | null) => {
-    if (!node) return;
+    if (!node || reviews.length <= 1) return;
 
     const autoplay = Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true });
     const embla = EmblaCarousel(node, {
@@ -62,7 +69,6 @@ export default function ReviewCarousel() {
     setScrollSnaps(embla.scrollSnapList());
     onSelect();
 
-    // Store for dot clicks
     (node as any).__embla = embla;
 
     return () => embla.destroy();
@@ -78,33 +84,42 @@ export default function ReviewCarousel() {
       {/* Badge */}
       <div class="text-center mb-8">
         <span class="inline-flex items-center gap-2 bg-cream border border-sand/40 rounded-full px-5 py-2 font-sans text-sm text-dark">
-          <span class="text-amber-400 text-lg">★</span>
-          Valutazione media <strong>4.9/5</strong> su Booking.com
+          <span class="text-blue-600 font-bold">10/10</span>
+          su Booking.com
         </span>
       </div>
 
-      {/* Carousel */}
-      <div class="overflow-hidden" ref={init} data-embla>
-        <div class="flex -mx-3">
-          {reviews.map((review, i) => (
-            <ReviewCard key={i} review={review} />
-          ))}
-        </div>
-      </div>
+      {/* Single review */}
+      {reviews.length === 1 ? (
+        <ReviewCard review={reviews[0]} single />
+      ) : (
+        <>
+          {/* Carousel */}
+          <div class="overflow-hidden" ref={init} data-embla>
+            <div class="flex -mx-3">
+              {reviews.map((review, i) => (
+                <ReviewCard key={i} review={review} />
+              ))}
+            </div>
+          </div>
 
-      {/* Dots */}
-      <div class="flex justify-center gap-2 mt-8">
-        {scrollSnaps.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => onDotClick(i)}
-            class={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
-              i === selectedIndex ? 'bg-accent w-6' : 'bg-sand/50 hover:bg-sand'
-            }`}
-            aria-label={`Vai alla recensione ${i + 1}`}
-          />
-        ))}
-      </div>
+          {/* Dots */}
+          {scrollSnaps.length > 1 && (
+            <div class="flex justify-center gap-2 mt-8">
+              {scrollSnaps.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => onDotClick(i)}
+                  class={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
+                    i === selectedIndex ? 'bg-accent w-6' : 'bg-sand/50 hover:bg-sand'
+                  }`}
+                  aria-label={`Vai alla recensione ${i + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }

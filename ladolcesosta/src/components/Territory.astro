@@ -1,6 +1,7 @@
 ---
 import { places } from '../data/territory';
 import TerritoryModal from './TerritoryModal.tsx';
+import TerritoryMapInteractive from './TerritoryMapInteractive.tsx';
 ---
 
 <section id="territorio" class="py-20 md:py-28 bg-beige/40">
@@ -11,8 +12,8 @@ import TerritoryModal from './TerritoryModal.tsx';
     </div>
 
     <div class="grid md:grid-cols-2 gap-12 items-start">
-      <!-- POI List -->
-      <div class="reveal">
+      <!-- Place list (left on desktop, below on mobile) -->
+      <div class="reveal order-2 md:order-1">
         <ul class="space-y-3">
           {places.map((place, i) => (
             <li>
@@ -33,34 +34,10 @@ import TerritoryModal from './TerritoryModal.tsx';
         </ul>
       </div>
 
-      <!-- Puglia SVG Map -->
-      <div class="reveal flex justify-center">
-        <div class="w-full max-w-xs text-accent">
-          <svg viewBox="0 0 260 400" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
-            <!-- Puglia outline -->
-            <path d="M80,20 L95,18 L115,22 L130,30 L145,28 L158,35 L165,45 L170,58 L168,72 L172,85 L180,95 L185,110 L182,125 L188,138 L195,148 L200,162 L198,175 L205,185 L210,195 L215,208 L220,220 L225,232 L228,245 L232,255 L238,262 L242,270 L245,278 L240,285 L232,290 L225,288 L218,282 L212,275 L205,268 L198,262 L192,255 L185,250 L178,245 L172,238 L168,230 L162,222 L155,215 L150,207 L144,200 L138,194 L132,188 L128,180 L122,175 L116,170 L112,162 L108,155 L104,147 L100,140 L96,133 L92,126 L88,118 L85,110 L82,102 L78,94 L75,86 L72,78 L70,68 L68,58 L70,48 L74,36 Z" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.3"/>
-            <!-- Salento -->
-            <path d="M198,262 L205,268 L212,275 L218,282 L225,288 L232,290 L240,285 L245,278 L248,290 L246,305 L242,318 L238,328 L232,338 L225,345 L218,350 L212,355 L205,360 L198,365 L192,370 L186,375 L180,378 L174,380 L168,378 L162,372 L158,364 L155,355 L153,344 L152,333 L154,322 L158,312 L164,304 L170,298 L176,292 L182,287 L188,280 L194,273 Z" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.3"/>
-            <!-- Gargano -->
-            <path d="M80,94 L75,86 L68,80 L60,76 L52,72 L44,70 L38,68 L34,72 L32,80 L35,88 L40,95 L48,100 L56,104 L64,106 L72,104 L78,100 Z" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.3"/>
-            <!-- Castellana pin with pulse -->
-            <circle cx="130" cy="175" r="8" fill="none" stroke="#9c7c4e" stroke-width="1" opacity="0.3">
-              <animate attributeName="r" values="8;16;8" dur="2s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite"/>
-            </circle>
-            <path d="M130,152 C123,152 117,158 117,165 C117,175 130,188 130,188 C130,188 143,175 143,165 C143,158 137,152 130,152 Z" fill="#9c7c4e"/>
-            <circle cx="130" cy="165" r="4" fill="#f5f0e8"/>
-            <text x="130" y="200" text-anchor="middle" fill="#7a6248" font-size="9" font-weight="600">Castellana Grotte</text>
-            <!-- POI dots -->
-            <circle cx="118" cy="192" r="3" fill="#b8a07a" opacity="0.7"/>
-            <text x="100" y="204" text-anchor="middle" fill="#7a6248" font-size="7">Alberobello</text>
-            <circle cx="148" cy="150" r="3" fill="#b8a07a" opacity="0.7"/>
-            <text x="162" y="148" fill="#7a6248" font-size="7">Polignano</text>
-            <circle cx="172" cy="200" r="3" fill="#b8a07a" opacity="0.7"/>
-            <text x="178" y="205" fill="#7a6248" font-size="7">Ostuni</text>
-            <circle cx="112" cy="198" r="3" fill="#b8a07a" opacity="0.7"/>
-            <text x="96" y="212" text-anchor="middle" fill="#7a6248" font-size="7">Locorotondo</text>
-          </svg>
+      <!-- Puglia map (interactive) -->
+      <div class="reveal order-1 md:order-2 flex justify-center">
+        <div class="w-full max-w-md md:max-w-lg">
+          <TerritoryMapInteractive client:visible />
         </div>
       </div>
     </div>
@@ -75,5 +52,24 @@ import TerritoryModal from './TerritoryModal.tsx';
       const index = parseInt((btn as HTMLElement).dataset.index || '0', 10);
       window.dispatchEvent(new CustomEvent('open-territory', { detail: index }));
     });
+    btn.addEventListener('mouseenter', () => {
+      const index = parseInt((btn as HTMLElement).dataset.index || '0', 10);
+      window.dispatchEvent(new CustomEvent('territory-hover', { detail: index }));
+    });
+    btn.addEventListener('mouseleave', () => {
+      window.dispatchEvent(new CustomEvent('territory-hover', { detail: null }));
+    });
   });
+
+  // Listen for map marker hover → highlight list button
+  window.addEventListener('territory-marker-hover', ((e: CustomEvent) => {
+    const index = e.detail;
+    document.querySelectorAll('.territory-btn').forEach((btn, i) => {
+      if (index === i) {
+        btn.classList.add('border-accent/60', 'shadow-md');
+      } else {
+        btn.classList.remove('border-accent/60', 'shadow-md');
+      }
+    });
+  }) as EventListener);
 </script>

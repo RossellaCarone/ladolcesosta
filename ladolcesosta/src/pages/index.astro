@@ -6,9 +6,8 @@ import Hero from '../components/Hero.astro';
 import Stats from '../components/Stats.astro';
 import About from '../components/About.astro';
 import PhotoCarousel from '../components/PhotoCarousel.tsx';
-import Amenities from '../components/Amenities.astro';
 import Territory from '../components/Territory.astro';
-import GoogleMap from '../components/GoogleMap.astro';
+
 import Booking from '../components/Booking.astro';
 import Reviews from '../components/Reviews.astro';
 import Contact from '../components/Contact.astro';
@@ -25,11 +24,11 @@ import '../styles/global.css';
   <About />
 
   <!-- Galleria fotografica -->
-  <section id="gallery" class="py-20 md:py-28 bg-cream">
+  <section id="galleria" class="py-20 md:py-28 bg-earth">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
       <div class="text-center mb-12 reveal">
-        <h2 class="font-serif text-4xl md:text-5xl text-dark mb-4">I nostri spazi</h2>
-        <p class="font-sans text-earth/70 text-lg">Scopri ogni angolo de La Dolce Sosta</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-cream mb-4">I nostri spazi</h2>
+        <p class="font-sans text-cream/70 text-lg">Scopri ogni angolo de La Dolce Sosta</p>
       </div>
       <div class="reveal">
         <PhotoCarousel client:visible />
@@ -37,11 +36,7 @@ import '../styles/global.css';
     </div>
   </section>
 
-  <Amenities />
-
   <Territory />
-
-  <GoogleMap />
 
   <Booking />
 
@@ -55,7 +50,7 @@ import '../styles/global.css';
   <script>
     const revealObs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.01, rootMargin: '0px 0px 100px 0px' });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   </script>
 </BaseLayout>
