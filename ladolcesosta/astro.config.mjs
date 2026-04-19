@@ -5,6 +5,7 @@ import preact from '@astrojs/preact';
 export default defineConfig({
   output: 'static',
   site: 'https://ladolcesosta.com',
+  dist: '../docs',
   integrations: [tailwind(), preact()],
   vite: {
     server: {
