@@ -1,4 +1,3 @@
-/** @jsxImportSource preact */
 import { useEffect, useCallback, useState } from 'preact/hooks';
 import EmblaCarousel from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';

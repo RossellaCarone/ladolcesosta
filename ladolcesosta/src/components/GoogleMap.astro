@@ -1,6 +1,6 @@
 ---
-const mapSrc = 'https://maps.google.com/maps?q=Via+Luigi+Cadorna+33+Castellana+Grotte+BA&output=embed';
-const mapsLink = 'https://www.google.com/maps/search/Via+Luigi+Cadorna+33+Castellana+Grotte+BA';
+const mapSrc = 'https://www.google.com/maps?q=40.887,17.161&z=15&output=embed';
+const mapsLink = 'https://www.google.com/maps/search/?api=1&query=Via+Luigi+Cadorna+33+Castellana+Grotte+BA';
 ---
 
 <section id="mappa" class="py-20 md:py-28 bg-cream">
@@ -24,12 +24,10 @@ const mapsLink = 'https://www.google.com/maps/search/Via+Luigi+Cadorna+33+Castel
       ></iframe>
     </div>
 
-    <noscript>
-      <p class="text-center mt-4">
-        <a href={mapsLink} target="_blank" rel="noopener noreferrer" class="text-accent underline hover:text-earth transition-colors">
-          Apri in Google Maps
-        </a>
-      </p>
-    </noscript>
+    <p class="text-center mt-4 font-sans text-sm">
+      <a href={mapsLink} target="_blank" rel="noopener noreferrer" class="text-accent underline hover:text-earth transition-colors">
+        📍 Apri in Google Maps
+      </a>
+    </p>
   </div>
 </section>

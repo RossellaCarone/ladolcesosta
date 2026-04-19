@@ -1,4 +1,3 @@
-/** @jsxImportSource preact */
 import { useState, useCallback } from 'preact/hooks';
 
 type Status = 'idle' | 'loading' | 'success';

@@ -55,7 +55,8 @@ export default function TerritoryModal() {
       {/* Modal content */}
       <div class="relative bg-cream rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto shadow-2xl">
         {/* Gradient header */}
-        <div class="h-32 rounded-t-2xl bg-gradient-to-br from-accent/40 via-warm/30 to-sand/50 flex items-end p-6">
+        <div class="h-40 rounded-t-2xl bg-gradient-to-br from-accent/40 via-warm/30 to-sand/50 flex items-end p-6 relative">
+          <span class="absolute top-4 right-6 text-5xl opacity-30">{place.icon}</span>
           <div>
             <h3 class="font-serif text-3xl text-dark">{place.name}</h3>
             <span class="font-sans text-sm text-earth/70">{place.distance} da La Dolce Sosta</span>
@@ -80,17 +81,23 @@ export default function TerritoryModal() {
 
           {/* Tips */}
           <div>
-            <h4 class="font-serif text-lg text-dark mb-2">Consigli</h4>
-            <ul class="space-y-2">
+            <h4 class="font-serif text-lg text-dark mb-3">Consigli pratici</h4>
+            <ul class="space-y-2.5">
               {place.tips.map((tip) => (
-                <li class="flex items-start gap-2 font-sans text-sm text-earth/70">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-accent mt-0.5 shrink-0">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <li class="flex items-start gap-2.5 font-sans text-sm text-earth/80">
+                  <span class="text-accent mt-0.5 shrink-0">→</span>
                   {tip}
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Distance */}
+          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-sand/20 font-sans text-sm text-earth/70">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 00-.879-2.121l-3.498-3.498A2.999 2.999 0 0014.024 8H12" />
+            </svg>
+            Come arrivarci: {place.distance} in auto da La Dolce Sosta
           </div>
 
           {/* Maps link */}

@@ -14,6 +14,8 @@ const Lightbox: FunctionalComponent<{
   onPrev: () => void;
   onNext: () => void;
 }> = ({ photo, index, total, onClose, onPrev, onNext }) => {
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -28,44 +30,80 @@ const Lightbox: FunctionalComponent<{
     };
   }, [onClose, onPrev, onNext]);
 
+  const onTouchStart = (e: TouchEvent) => {
+    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  };
+  const onTouchEnd = (e: TouchEvent) => {
+    if (!touchStart.current) return;
+    const dx = e.changedTouches[0].clientX - touchStart.current.x;
+    const dy = e.changedTouches[0].clientY - touchStart.current.y;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx > 0) onPrev(); else onNext();
+    }
+    touchStart.current = null;
+  };
+
   return (
     <div
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
+      {/* Close */}
       <button
         onClick={(e) => { e.stopPropagation(); onClose(); }}
-        class="absolute top-4 right-4 text-white/80 hover:text-white text-4xl leading-none cursor-pointer z-10"
+        class="absolute top-4 right-4 z-20 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur text-white text-sm font-sans hover:bg-white/25 transition-colors cursor-pointer"
         aria-label="Chiudi"
       >
-        &times;
+        ✕
       </button>
 
+      {/* Desktop arrows */}
       <button
         onClick={(e) => { e.stopPropagation(); onPrev(); }}
-        class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-5xl leading-none cursor-pointer z-10"
+        class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer"
         aria-label="Precedente"
       >
-        &#8249;
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-
       <button
         onClick={(e) => { e.stopPropagation(); onNext(); }}
-        class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-5xl leading-none cursor-pointer z-10"
+        class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer"
         aria-label="Successiva"
       >
-        &#8250;
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="none"><path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
 
-      <div class="max-w-[90vw] max-h-[85vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+      {/* Image */}
+      <div class="w-full h-full flex items-center justify-center p-4 md:px-20" onClick={(e) => e.stopPropagation()}>
         <img
           src={photo.src}
           alt={photo.alt}
-          class="max-w-full max-h-[75vh] object-contain rounded-lg"
+          class="max-w-full max-h-[90vh] object-contain rounded-lg select-none"
+          draggable={false}
         />
-        <p class="text-white/80 text-sm mt-3 text-center font-sans">
-          {photo.alt} <span class="text-white/50 ml-2">{index + 1}/{total}</span>
-        </p>
+      </div>
+
+      {/* Counter + mobile arrows */}
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
+        <button
+          onClick={(e) => { e.stopPropagation(); onPrev(); }}
+          class="md:hidden w-10 h-10 rounded-full bg-white/10 backdrop-blur flex items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer"
+          aria-label="Precedente"
+        >
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <span class="px-4 py-1.5 rounded-full bg-white/15 backdrop-blur text-white text-sm font-sans tabular-nums">
+          {index + 1} / {total}
+        </span>
+        <button
+          onClick={(e) => { e.stopPropagation(); onNext(); }}
+          class="md:hidden w-10 h-10 rounded-full bg-white/10 backdrop-blur flex items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer"
+          aria-label="Successiva"
+        >
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
     </div>
   );
@@ -114,7 +152,7 @@ const PhotoCarousel: FunctionalComponent = () => {
 
     const embla = EmblaCarousel(viewportRef.current, {
       align: 'start',
-      loop: false,
+      loop: true,
       dragFree: false,
       containScroll: 'trimSnaps',
       slidesToScroll: 1,
@@ -202,11 +240,7 @@ const PhotoCarousel: FunctionalComponent = () => {
                 inView={visibleSlides.has(i)}
                 onClick={() => openLightbox(i)}
               />
-              <p class="mt-2 text-sm text-earth/70 font-sans text-center truncate">
-                <span class="font-medium text-earth">{photo.category}</span>
-                <span class="mx-1">·</span>
-                {photo.alt.split('—')[0]?.trim() || photo.alt}
-              </p>
+
             </div>
           ))}
         </div>
