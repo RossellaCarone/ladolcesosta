@@ -1,0 +1,29 @@
+---
+import { stats } from '../data/stats';
+import AnimatedCounter from './AnimatedCounter.tsx';
+---
+
+<section class="bg-dark py-16 md:py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4">
+      {stats.map((stat, i) => (
+        <div
+          class:list={[
+            'flex flex-col items-center gap-2 py-6 md:py-0',
+            i < stats.length - 1 && 'border-r border-sand/20',
+          ]}
+        >
+          <AnimatedCounter
+            client:visible
+            target={stat.value}
+            suffix={stat.suffix}
+            decimal={stat.decimal ?? false}
+          />
+          <span class="text-[0.65rem] uppercase tracking-[0.18em] text-sand/60 font-sans">
+            {stat.label}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

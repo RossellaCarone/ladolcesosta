@@ -1,0 +1,74 @@
+---
+const features = [
+  'WiFi gratuito',
+  'Aria condizionata',
+  'Cucina attrezzata con caffè Nespresso',
+  'Lavatrice',
+  'TV a schermo piatto',
+  'Animali ammessi',
+];
+---
+
+<section id="about" class="bg-cream py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Text -->
+      <div class="reveal">
+        <span class="text-[0.65rem] uppercase tracking-[0.22em] text-accent font-sans">
+          La casa
+        </span>
+
+        <h2 class="font-serif text-dark mt-3 text-[clamp(2rem,4vw,3rem)] leading-[1.15]">
+          Benvenuti a <em class="text-accent">La Dolce Sosta</em>
+        </h2>
+
+        <div class="mt-5 h-[2px] w-12 bg-warm"></div>
+
+        <div class="mt-7 space-y-5 text-dark/80 leading-relaxed text-[0.95rem]">
+          <p>
+            Varcate la soglia del civico 33 di Via Luigi Cadorna e troverete 80 metri quadri
+            tutti per voi: un soggiorno luminoso con tavolo da pranzo per sei, una cucina
+            attrezzata con tutto il necessario per sentirvi a casa, due camere da letto
+            confortevoli e un bagno moderno con doccia.
+          </p>
+          <p>
+            Ogni angolo racconta la Puglia: le pareti in pietra locale, i dettagli in legno
+            naturale, la luce calda delle lampade artigianali. Sul muro del soggiorno, una
+            scritta vi accoglie — "Non accontentarti dell'orizzonte, cerca l'infinito" — è
+            il nostro invito a vivere la Puglia con gli occhi spalancati.
+          </p>
+          <p>
+            La Dolce Sosta ospita da 1 a 6 persone, perfetta per coppie, famiglie o piccoli
+            gruppi di amici. Nessun altro ospite, nessuna area condivisa: l'intera casa è
+            esclusivamente vostra.
+          </p>
+        </div>
+
+        <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-[0.85rem] text-dark/70">
+          {features.map((f) => (
+            <li class="flex items-center gap-2">
+              <span class="h-1 w-1 rounded-full bg-accent shrink-0"></span>
+              {f}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Images -->
+      <div class="reveal relative h-[420px] sm:h-[500px] lg:h-[560px]">
+        <img
+          src="/images/842231822.jpg"
+          alt="Scritta motivazionale sul muro del soggiorno"
+          class="absolute top-0 right-0 w-[80%] h-[75%] object-cover rounded-sm shadow-lg"
+          loading="lazy"
+        />
+        <img
+          src="/images/842231765.jpg"
+          alt="Soggiorno ampio e luminoso"
+          class="absolute bottom-0 left-0 w-[55%] h-[55%] object-cover rounded-sm shadow-lg border-4 border-cream"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>

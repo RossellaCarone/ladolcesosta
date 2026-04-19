@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import MobileMenu from '../components/MobileMenu.tsx';
 import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import About from '../components/About.astro';
 import '../styles/global.css';
 ---
 
@@ -10,4 +12,13 @@ import '../styles/global.css';
   <Nav />
   <MobileMenu client:media="(max-width: 900px)" />
   <Hero />
+  <Stats />
+  <About />
+
+  <script>
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  </script>
 </BaseLayout>

@@ -45,6 +45,10 @@
   animation: scrollLine 2s ease-in-out infinite;
 }
 
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.85s ease, transform 0.85s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
 /* Clip-path for hero image on desktop */
 @media (min-width: 1024px) {
   .lg\:clip-diagonal {
