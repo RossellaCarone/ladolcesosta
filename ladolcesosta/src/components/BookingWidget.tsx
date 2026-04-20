@@ -23,15 +23,22 @@ export default function BookingWidget() {
 
   const handleCheckinChange = useCallback((e: Event) => {
     const val = (e.target as HTMLInputElement).value;
+    if (val && val < minCheckin) return;
     setCheckin(val);
     setError('');
     if (checkout && val >= checkout) setCheckout('');
-  }, [checkout]);
+  }, [checkout, minCheckin]);
 
   const handleCheckoutChange = useCallback((e: Event) => {
-    setCheckout((e.target as HTMLInputElement).value);
+    const val = (e.target as HTMLInputElement).value;
+    if (val && checkin && val <= checkin) {
+      setCheckout('');
+      return;
+    }
+    if (val && val < minCheckout) return;
+    setCheckout(val);
     setError('');
-  }, []);
+  }, [checkin, minCheckout]);
 
   const bookOnBooking = useCallback(() => {
     if (!checkin || !checkout) {
@@ -51,7 +58,7 @@ export default function BookingWidget() {
 
   return (
     <div class="max-w-xl mx-auto">
-      <div class="grid grid-cols-2 gap-4 mb-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <div>
           <label class={labelClass}>Check-in</label>
           <input

@@ -41,7 +41,7 @@ export default function TerritoryModal() {
   return (
     <div
       ref={overlayRef}
-      class="fixed inset-0 z-50 flex items-center justify-center p-4"
+      class="fixed inset-0 z-[70] flex items-center justify-center p-4"
       style={{ backgroundColor: 'rgba(60,46,30,0.7)' }}
       onClick={(e) => {
         if (e.target === overlayRef.current) setSelected(null);
