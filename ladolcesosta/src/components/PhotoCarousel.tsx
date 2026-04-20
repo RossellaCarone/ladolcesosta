@@ -47,7 +47,7 @@ const Lightbox: FunctionalComponent<{
       {/* Close */}
       <button
         onClick={onClose}
-        class="absolute top-4 right-4 z-[90] w-10 h-10 rounded-full bg-white/15 flex items-center justify-center text-white hover:bg-white/25 transition-colors cursor-pointer"
+        class="absolute top-4 right-4 z-[100] w-10 h-10 rounded-full bg-white/15 flex items-center justify-center text-white hover:bg-white/25 transition-colors cursor-pointer select-none"
         aria-label="Chiudi"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -56,21 +56,21 @@ const Lightbox: FunctionalComponent<{
       {/* Desktop arrows */}
       <button
         onClick={onPrev}
-        class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer"
+        class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-[90] w-12 h-12 rounded-full bg-white/10 items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer select-none"
         aria-label="Precedente"
       >
         <svg width="24" height="24" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <button
         onClick={onNext}
-        class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer"
+        class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-[90] w-12 h-12 rounded-full bg-white/10 items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer select-none"
         aria-label="Successiva"
       >
         <svg width="24" height="24" viewBox="0 0 20 20" fill="none"><path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
 
       {/* Image — centered, no event blocking */}
-      <div class="absolute inset-0 flex items-center justify-center pointer-events-none p-4 md:px-20">
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none p-4 md:px-20 overflow-hidden" style={{ touchAction: 'pan-y pinch-zoom' }}>
         <img
           src={photo.src}
           alt={photo.alt}
@@ -80,10 +80,10 @@ const Lightbox: FunctionalComponent<{
       </div>
 
       {/* Counter + mobile arrows */}
-      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-[90] flex items-center gap-4">
         <button
           onClick={onPrev}
-          class="md:hidden w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer"
+          class="md:hidden w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer select-none"
           aria-label="Precedente"
         >
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -93,7 +93,7 @@ const Lightbox: FunctionalComponent<{
         </span>
         <button
           onClick={onNext}
-          class="md:hidden w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer"
+          class="md:hidden w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer select-none"
           aria-label="Successiva"
         >
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
