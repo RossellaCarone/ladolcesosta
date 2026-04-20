@@ -82,8 +82,9 @@ const Lightbox: FunctionalComponent<{
       {/* Counter + mobile arrows */}
       <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-[90] flex items-center gap-4">
         <button
+          type="button"
           onClick={onPrev}
-          class="md:hidden w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer select-none touch-manipulation"
+          class="md:hidden w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors pointer-events-auto"
           aria-label="Precedente"
         >
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -92,8 +93,9 @@ const Lightbox: FunctionalComponent<{
           {index + 1} / {total}
         </span>
         <button
+          type="button"
           onClick={onNext}
-          class="md:hidden w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer select-none touch-manipulation"
+          class="md:hidden w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors pointer-events-auto"
           aria-label="Successiva"
         >
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
