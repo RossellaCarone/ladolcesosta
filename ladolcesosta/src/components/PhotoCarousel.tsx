@@ -38,7 +38,7 @@ const Lightbox: FunctionalComponent<{
 
   return (
     <div
-      class="fixed inset-0 z-50"
+      class="fixed inset-0 z-[80]"
       style="background: rgba(30,20,12,0.92)"
     >
       {/* Clickable backdrop */}
@@ -47,7 +47,7 @@ const Lightbox: FunctionalComponent<{
       {/* Close */}
       <button
         onClick={onClose}
-        class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/15 flex items-center justify-center text-white hover:bg-white/25 transition-colors cursor-pointer"
+        class="absolute top-4 right-4 z-[90] w-10 h-10 rounded-full bg-white/15 flex items-center justify-center text-white hover:bg-white/25 transition-colors cursor-pointer"
         aria-label="Chiudi"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
