@@ -57,9 +57,9 @@ export default function BookingWidget() {
   const labelClass = 'block font-sans text-sm text-earth mb-1.5';
 
   return (
-    <div class="w-full">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4 w-full min-w-0">
-        <div class="w-full">
+    <div class="max-w-xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div>
           <label class={labelClass}>Check-in</label>
           <input
             type="date"
@@ -69,14 +69,14 @@ export default function BookingWidget() {
             class={`${inputClass} w-full`}
           />
         </div>
-        <div class="w-full">
+        <div>
           <label class={labelClass}>Check-out</label>
           <input
             type="date"
             min={minCheckout}
             value={checkout}
             onInput={handleCheckoutChange}
-            class={inputClass}
+            class={`${inputClass} w-full`}
           />
         </div>
       </div>
