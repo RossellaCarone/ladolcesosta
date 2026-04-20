@@ -53,23 +53,23 @@ export default function BookingWidget() {
     window.open('https://www.airbnb.it/s/Castellana-Grotte--BA/homes', '_blank');
   }, []);
 
-  const inputClass = 'w-full px-4 py-3 rounded-xl border border-sand/50 bg-cream/60 text-dark font-sans text-sm focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all';
+  const inputClass = 'w-full box-border px-3 py-3 rounded-xl border border-sand/50 bg-cream/60 text-dark font-sans text-base focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all';
   const labelClass = 'block font-sans text-sm text-earth mb-1.5';
 
   return (
-    <div class="max-w-xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-        <div>
+    <div class="w-full">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4 w-full min-w-0">
+        <div class="w-full">
           <label class={labelClass}>Check-in</label>
           <input
             type="date"
             min={minCheckin}
             value={checkin}
             onInput={handleCheckinChange}
-            class={inputClass}
+            class={`${inputClass} w-full`}
           />
         </div>
-        <div>
+        <div class="w-full">
           <label class={labelClass}>Check-out</label>
           <input
             type="date"
