@@ -55,7 +55,7 @@ const TerritoryMapInteractive: FunctionalComponent = () => {
     <div class="relative w-full" style="aspect-ratio: 324.58 / 259.98;">
       {/* SVG map background */}
       <img
-        src="/images/puglia.svg"
+        src="/ladolcesosta/images/puglia.svg"
         alt="Mappa della Puglia"
         class="w-full h-full"
         draggable={false}
