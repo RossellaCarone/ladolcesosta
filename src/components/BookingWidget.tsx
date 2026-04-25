@@ -68,7 +68,7 @@ export default function BookingWidget() {
   return (
     <div class="max-w-xl mx-auto px-2 sm:px-0">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
-        <div>
+        <div class="relative">
           <label class={labelClass}>Check-in</label>
           <input
             type="date"
@@ -78,7 +78,7 @@ export default function BookingWidget() {
             class={`${inputClass} w-full`}
           />
         </div>
-        <div>
+        <div class="relative">
           <label class={labelClass}>Check-out</label>
           <input
             type="date"
