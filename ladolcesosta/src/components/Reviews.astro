@@ -11,31 +11,31 @@ import { reviews } from '../data/reviews';
     <div class="text-center reveal">
       <p class="font-sans text-base md:text-lg uppercase tracking-[0.3em] text-earth/60 mb-20">Dicono di noi</p>
 
-      <div id="reviews-container" class="relative min-h-[200px] md:min-h-[240px]">
+<div id="reviews-container" class="relative min-h-[280px] md:min-h-[240px]">
         {reviews.map((review, i) => (
           <div class="review-slide absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-1000" data-index={i} style={i === 0 ? 'opacity: 1;' : 'opacity: 0;'}>
-            <blockquote class="mb-10 w-full">
-              <p class="font-serif text-2xl md:text-3xl lg:text-4xl text-dark leading-relaxed italic">
+            <blockquote class="mb-6 md:mb-10 w-full">
+              <p class="font-serif text-lg md:text-2xl lg:text-3xl text-dark leading-relaxed italic">
                 &ldquo;{review.text}&rdquo;
               </p>
             </blockquote>
 
-<div class="flex flex-col items-center gap-6 mt-20 sm:mt-24">
-              <p class="font-sans text-lg tracking-wide text-dark font-medium">
+            <div class="flex flex-col items-center gap-4 md:gap-6 mt-8 md:mt-16">
+              <p class="font-sans text-base md:text-lg tracking-wide text-dark font-medium">
                 {review.author}
               </p>
 
-              <div class="w-12 h-px bg-warm"></div>
+              <div class="w-8 md:w-12 h-px bg-warm"></div>
 
               <div class="flex items-center gap-3">
                 {review.source === 'Booking.com' ? (
-                  <span class="bg-[#003580] text-white font-sans font-bold text-base px-2.5 py-1 rounded-md">
+                  <span class="bg-[#003580] text-white font-sans font-bold text-sm md:text-base px-2 py-1 rounded-md">
                     {review.rating}/10
                   </span>
                 ) : (
                   <div class="flex gap-0.5">
                     {Array.from({ length: 5 }, (_, i) => (
-                      <span class={`text-xl ${i < review.rating ? 'text-amber-400' : 'text-sand/40'}`}>★</span>
+                      <span class={`text-base md:text-xl ${i < review.rating ? 'text-amber-400' : 'text-sand/40'}`}>★</span>
                     ))}
                   </div>
                 )}
@@ -46,7 +46,7 @@ import { reviews } from '../data/reviews';
         ))}
       </div>
 
-<div class="flex flex-col items-center gap-6 mt-20 sm:mt-24">
+      <div class="flex flex-col items-center gap-4 md:gap-6 mt-12 md:mt-20">
         <a
           href="https://www.booking.com/hotel/it/la-dolce-sosta-castellana-grotte.it.html"
           target="_blank"
