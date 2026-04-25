@@ -26,7 +26,7 @@ jobs:
         working-directory: ladolcesosta
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ladolcesosta/dist
+          path: dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
