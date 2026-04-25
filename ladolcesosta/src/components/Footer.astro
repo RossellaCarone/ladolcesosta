@@ -3,51 +3,59 @@ const year = new Date().getFullYear();
 const BOOKING_URL = 'https://www.booking.com/hotel/it/la-dolce-sosta-castellana-grotte.it.html';
 ---
 
-<footer class="bg-dark text-cream/70 pt-14 pb-8">
+<footer class="bg-dark text-cream pt-14 pb-8">
   <div class="max-w-5xl mx-auto px-6 md:px-10">
     <!-- Top -->
     <div class="flex flex-col items-center text-center mb-10">
       <a href="#" class="font-serif text-2xl text-cream mb-3">
-        <span class="italic text-accent/80 font-light">La Dolce</span>
+        <span class="italic text-accent font-light">La Dolce</span>
         <span class="font-semibold"> Sosta</span>
       </a>
-      <p class="font-sans text-sm text-cream/40 max-w-md leading-relaxed">
+      <p class="font-sans text-sm text-cream/80 max-w-md leading-relaxed">
         Casa vacanze nel cuore di Castellana Grotte, porta d'ingresso alla Valle d'Itria.
       </p>
     </div>
 
     <!-- Nav links -->
     <nav class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-10">
-      <a href="#la-casa" class="font-sans text-xs uppercase tracking-wider text-cream/40 hover:text-cream transition-colors">La Casa</a>
-      <a href="#galleria" class="font-sans text-xs uppercase tracking-wider text-cream/40 hover:text-cream transition-colors">Galleria</a>
-      <a href="#territorio" class="font-sans text-xs uppercase tracking-wider text-cream/40 hover:text-cream transition-colors">Territorio</a>
-      <a href="#recensioni" class="font-sans text-xs uppercase tracking-wider text-cream/40 hover:text-cream transition-colors">Recensioni</a>
-      <a href="#prenota" class="font-sans text-xs uppercase tracking-wider text-cream/40 hover:text-cream transition-colors">Prenota</a>
-      <a href="#contatti" class="font-sans text-xs uppercase tracking-wider text-cream/40 hover:text-cream transition-colors">Contatti</a>
+      <a href="#la-casa" class="font-sans text-xs uppercase tracking-wider text-cream/70 hover:text-cream transition-colors">La Casa</a>
+      <a href="#galleria" class="font-sans text-xs uppercase tracking-wider text-cream/70 hover:text-cream transition-colors">Galleria</a>
+      <a href="#territorio" class="font-sans text-xs uppercase tracking-wider text-cream/70 hover:text-cream transition-colors">Territorio</a>
+      <a href="#recensioni" class="font-sans text-xs uppercase tracking-wider text-cream/70 hover:text-cream transition-colors">Recensioni</a>
+      <a href="#prenota" class="font-sans text-xs uppercase tracking-wider text-cream/70 hover:text-cream transition-colors">Prenota</a>
+      <a href="#contatti" class="font-sans text-xs uppercase tracking-wider text-cream/70 hover:text-cream transition-colors">Contatti</a>
     </nav>
 
-    <!-- Address + Booking -->
+    <!-- Address + Booking + Airbnb -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-10 text-center">
-      <p class="font-sans text-xs text-cream/35">
+      <p class="font-sans text-sm text-cream/70">
         Via Luigi Cadorna, 33 — 70013 Castellana Grotte (BA)
       </p>
       <a
         href={BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
-        class="font-sans text-xs text-accent/70 hover:text-accent transition-colors"
+        class="font-sans text-sm text-accent hover:text-accent/80 transition-colors"
       >
         Prenota su Booking.com &rarr;
+      </a>
+      <a
+        href="https://www.airbnb.it/rooms/1642096504763171753"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-sans text-sm text-accent hover:text-accent/80 transition-colors"
+      >
+        Prenota su Airbnb &rarr;
       </a>
     </div>
 
     <!-- Divider -->
-    <div class="border-t border-cream/10 pt-6">
+    <div class="border-t border-cream/20 pt-6">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p class="font-sans text-[11px] text-cream/25">
+        <p class="font-sans text-xs text-cream/60">
           CIN: IT072017C200123181 &middot; CIS: BA07201791000075573
         </p>
-        <p class="font-sans text-[11px] text-cream/25">
+        <p class="font-sans text-xs text-cream/60">
           &copy; {year} La Dolce Sosta
         </p>
       </div>
