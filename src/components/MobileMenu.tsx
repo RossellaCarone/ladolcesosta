@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'preact/hooks';
 
-const BOOKING_URL = 'https://www.booking.com/hotel/it/la-dolce-sosta-castellana-grotte.it.html';
+
 
 const links = [
   { label: 'La Casa', href: '#la-casa' },
@@ -69,13 +69,11 @@ export default function MobileMenu() {
             </a>
           ))}
           <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#prenota"
+            onClick={() => setOpen(false)}
             class="mt-4 inline-flex items-center gap-2 bg-earth text-white font-sans tracking-wide px-6 py-3 rounded-full hover:bg-dark transition-colors duration-300"
           >
-            Prenota su Booking
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            Prenota
           </a>
         </nav>
       </div>
