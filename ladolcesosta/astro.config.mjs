@@ -3,9 +3,9 @@ import tailwind from '@astrojs/tailwind';
 import preact from '@astrojs/preact';
 
 export default defineConfig({
-  base: '/ladolcesosta',
+  base: '/',
   output: 'static',
-  site: 'https://rossellacarone.github.io',
+  site: 'https://ladolcesostahome.com',
   build: {
     assets: 'assets',
   },

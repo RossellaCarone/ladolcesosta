@@ -18,7 +18,7 @@ export const places: Place[] = [
       "Scoperte nel 1938 dallo speleologo Franco Anelli, le Grotte di Castellana si estendono per oltre 3 km a 70 metri di profondità. Il percorso completo vi porta attraverso caverne dai nomi evocativi — la Grave, il Corridoio del Serpente, la Caverna della Civetta — fino alla Grotta Bianca, considerata la grotta più splendente al mondo per la purezza delle sue stalattiti di calcite. La temperatura è costante a 16°C tutto l'anno: perfetta d'estate, portatevi una felpa d'inverno. Il percorso breve (1 km, 50 min) vi dà un assaggio; quello completo (3 km, 2 ore) è l'esperienza vera.",
     coordinates: { lat: 40.8725, lng: 17.1483 },
     icon: "🕳️",
-    image: "/ladolcesosta/images/grotte.avif",
+    image: "/images/grotte.avif",
     tips: [
       "Prenotate online su grottedicastellana.it per saltare la coda, soprattutto in agosto",
       "Temperatura interna costante a 16°C: portatevi una felpa anche in piena estate",
@@ -36,7 +36,7 @@ export const places: Place[] = [
       "Il nome dice tutto: Locorotondo è un borgo perfettamente circolare, arroccato su un colle che domina la Valle d'Itria. Le 'cummerse' — case con tetti a spiovente coperti di chiancarelle — sono uniche di questo paese e creano un profilo inconfondibile. Il centro storico è un gioiello silenzioso: niente folla turistica, solo anziani seduti davanti casa, gatti sulle scale e il profumo di ragù la domenica. Il vino bianco DOC di Locorotondo, da uve Verdeca e Bianco d'Alessano, è il compagno perfetto per il pesce crudo pugliese.",
     coordinates: { lat: 40.7554, lng: 17.3261 },
     icon: "🍷",
-    image: "/ladolcesosta/images/locorotondo.webp",
+    image: "/images/locorotondo.webp",
     tips: [
       "Assaggiate il vino bianco DOC locale alla Cantina del Locorotondo (visite con degustazione)",
       "Belvedere di Via Nardelli: il panorama più bello sulla Valle d'Itria e i trulli sparsi",
@@ -54,7 +54,7 @@ export const places: Place[] = [
       "Patrimonio UNESCO dal 1996, Alberobello custodisce oltre 1.500 trulli — costruzioni coniche in pietra a secco che risalgono al XVII secolo, nate da un trucco fiscale: i conti di Conversano facevano costruire case senza malta così potevano smontarle velocemente prima delle ispezioni del Re di Napoli sui nuovi insediamenti. Il Rione Monti è la zona turistica, ma per vivere i trulli senza folla attraversate verso Rione Aia Piccola, dove abitano ancora famiglie locali. Il Trullo Sovrano, l'unico a due piani, merita la visita.",
     coordinates: { lat: 40.7844, lng: 17.2372 },
     icon: "🏠",
-    image: "/ladolcesosta/images/alberobello.jpg",
+    image: "/images/alberobello.jpg",
     tips: [
       "Visitate al mattino presto (prima delle 9:30) o dopo le 18 per evitare la folla dei bus turistici",
       "Rione Aia Piccola è la zona autentica: trulli abitati, nessun negozio di souvenir",
@@ -72,7 +72,7 @@ export const places: Place[] = [
       "Martina Franca è l'elegante signora della Valle d'Itria: palazzi barocchi dalle facciate ricamate, portali monumentali e balconi in ferro battuto che raccontano secoli di nobiltà terriera. Il Palazzo Ducale, oggi sede del Municipio, ha saloni affrescati visitabili gratuitamente. Ma il vero tesoro di Martina è il capocollo DOP — stagionato nelle grotte naturali con una tecnica che risale al 1600, è considerato uno dei migliori salumi d'Italia. In estate (luglio-agosto) il Festival della Valle d'Itria trasforma il centro in un palcoscenico di opera lirica e musica classica.",
     coordinates: { lat: 40.7014, lng: 17.3372 },
     icon: "🎭",
-    image: "/ladolcesosta/images/martinafranca.jpg",
+    image: "/images/martinafranca.jpg",
     tips: [
       "Capocollo DOP: compratelo alla Macelleria Ricci in Via Cavour — il migliore della zona",
       "Palazzo Ducale: visita gratuita ai saloni affrescati, chiedete al portiere del Municipio",
@@ -90,7 +90,7 @@ export const places: Place[] = [
       "Monopoli è la sorpresa della Puglia: un centro storico vivacissimo affacciato su un porto peschereccio ancora attivo, circondato da oltre 25 calette e spiagge. A differenza delle vicine località turistiche, qui la vita locale non si è fermata: al mattino presto i pescatori vendono il pescato al porto, le massaie stendono la pasta fresca sui tavoli di marmo, e la sera il centro si anima con aperitivi e cena. Il Castello di Carlo V domina il porto, e la Cattedrale barocca custodisce l'icona della Madonna della Madia, patrona della città.",
     coordinates: { lat: 40.9497, lng: 17.2889 },
     icon: "⚓",
-    image: "/ladolcesosta/images/monopoli.jpg",
+    image: "/images/monopoli.jpg",
     tips: [
       "Cala Porta Vecchia: la spiaggetta in centro storico, piccola ma scenografica",
       "Mercato del pesce al porto la mattina presto (6:30-9:00) — spettacolo autentico",
@@ -108,7 +108,7 @@ export const places: Place[] = [
       "Arroccata su scogliere a picco sull'Adriatico, Polignano è molto più della famosa Lama Monachile. Fondata dai Greci col nome di Neapolis, il centro storico è un dedalo di vicoli con affacci improvvisi sul mare e poesie scritte sui muri dal progetto 'Guido il Flaneur'. Patria di Domenico Modugno — la sua statua a braccia aperte sul lungomare è diventata iconica. D'estate il Red Bull Cliff Diving porta tuffatori da tutto il mondo dal ponte della Lama. Ma il segreto vero è la costa a sud: calette raggiungibili solo a piedi come Cala Paura e Cala San Vito.",
     coordinates: { lat: 40.9942, lng: 17.2206 },
     icon: "🌊",
-    image: "/ladolcesosta/images/polignano.jpg",
+    image: "/images/polignano.jpg",
     tips: [
       "Tramonto dal ponte di Lama Monachile è imperdibile — arrivate 30 minuti prima per prendere posto",
       "Gelato da Supermago del Gelo (via Marchese di Conversano): cremini e pistacchio i migliori",
@@ -126,7 +126,7 @@ export const places: Place[] = [
       "La Città Bianca deve il suo soprannome alla tradizione di imbiancare le case a calce, iniziata nel Medioevo durante le pestilenze per le proprietà disinfettanti della calce viva. Arrampicata su tre colli, Ostuni domina la piana degli ulivi millenari fino al mare — alcuni di questi ulivi hanno oltre 3.000 anni e producono ancora. Il centro storico è un labirinto di scalinate, archi e piazzette dove perdersi è il modo migliore per esplorare. La Cattedrale in cima, con la sua facciata gotica e il rosone a 24 raggi, è tra le più belle della Puglia.",
     coordinates: { lat: 40.7296, lng: 17.5764 },
     icon: "🏛️",
-    image: "/ladolcesosta/images/ostuni.jpg",
+    image: "/images/ostuni.jpg",
     tips: [
       "Salite fino alla Cattedrale per la vista panoramica a 360° — arrivate al tramonto",
       "Parcheggio fuori le mura (Piazzale Santissima Trinità), poi salite a piedi",
@@ -144,7 +144,7 @@ export const places: Place[] = [
       "Bari Vecchia è il cuore pulsante del capoluogo pugliese: un dedalo di 120 vicoli dove le signore impastano orecchiette davanti alle porte di casa (la scena più famosa è in Strada Arco Basso), dove la Basilica di San Nicola attira pellegrini ortodossi da tutta Europa, e dove la focaccia barese si compra ancora calda dal forno alle 7 di mattina. Il lungomare Nazario Sauro, lungo 12 km, è perfetto per una passeggiata al tramonto. Il Teatro Petruzzelli, ricostruito dopo l'incendio del 1991, è il quarto teatro d'Italia per grandezza.",
     coordinates: { lat: 41.1171, lng: 16.8719 },
     icon: "🏰",
-    image: "/ladolcesosta/images/barivecchia.jpg",
+    image: "/images/barivecchia.jpg",
     tips: [
       "Bari Vecchia: Strada Arco Basso per vedere le signore fare le orecchiette (mattina, non domenica)",
       "Focaccia barese: Panificio Fiore in Strada Palazzo di Città — prendete quella con pomodorini",
