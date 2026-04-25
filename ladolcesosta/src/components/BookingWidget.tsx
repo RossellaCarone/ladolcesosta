@@ -49,6 +49,15 @@ export default function BookingWidget() {
     window.open(url, '_blank');
   }, [checkin, checkout, guests]);
 
+  const bookOnAirbnb = useCallback(() => {
+    if (!checkin || !checkout) {
+      setError('Seleziona le date di check-in e check-out');
+      return;
+    }
+    const url = `https://www.airbnb.it/rooms/1642096504763171753?check_in=${checkin}&check_out=${checkout}&adults=${guests}`;
+    window.open(url, '_blank');
+  }, [checkin, checkout, guests]);
+
   const searchAirbnb = useCallback(() => {
     window.open('https://www.airbnb.it/s/Castellana-Grotte--BA/homes', '_blank');
   }, []);
@@ -104,6 +113,13 @@ export default function BookingWidget() {
         >
           Prenota su Booking.com
         </button>
+
+      <button
+        onClick={bookOnAirbnb}
+        class="w-full px-6 py-3.5 mt-3 bg-accent text-cream font-sans font-medium rounded-xl hover:bg-earth transition-colors text-sm tracking-wide cursor-pointer"
+      >
+        Prenota su Airbnb
+      </button>
     </div>
   );
 }
