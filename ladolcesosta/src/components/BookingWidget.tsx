@@ -66,8 +66,8 @@ export default function BookingWidget() {
   const labelClass = 'block font-sans text-sm text-earth mb-1.5';
 
   return (
-    <div class="max-w-xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+    <div class="max-w-xl mx-auto px-2 sm:px-0">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
         <div>
           <label class={labelClass}>Check-in</label>
           <input

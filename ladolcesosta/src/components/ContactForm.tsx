@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'preact/hooks';
 
-const FORMSPREE_URL = 'https://formspree.io/f/xqewbzew';
+const FORMSPREE_URL = 'https://formspree.io/f/xkokeggn';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
