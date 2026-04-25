@@ -96,7 +96,7 @@ export default function ContactForm() {
 
       {status === 'error' && (
         <p class="text-red-500 text-sm font-sans text-center">
-          Errore nell'invio. Riprova o scrivici direttamente a info@ladolcesosta.it
+          Errore nell'invio. Riprova o scrivici direttamente a Piero.antonacci29@gmail.com
         </p>
       )}
 
