@@ -73,7 +73,7 @@ export default function MobileMenu() {
             onClick={() => setOpen(false)}
             class="mt-4 inline-flex items-center gap-2 bg-earth text-white font-sans tracking-wide px-6 py-3 rounded-full hover:bg-dark transition-colors duration-300"
           >
-            Prenota
+            Prenota ora
           </a>
         </nav>
       </div>

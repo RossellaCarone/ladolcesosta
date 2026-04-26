@@ -26,27 +26,37 @@ const BOOKING_URL = 'https://www.booking.com/hotel/it/la-dolce-sosta-castellana-
       <a href="#contatti" class="font-sans text-xs uppercase tracking-wider text-cream/70 hover:text-cream transition-colors">Contatti</a>
     </nav>
 
-    <!-- Address + Booking + Airbnb -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-10 text-center">
+    <!-- Address + Booking + Airbnb + Instagram -->
+    <div class="flex flex-col items-center justify-center gap-4 mb-10 text-center">
       <p class="font-sans text-sm text-cream/70">
         Via Luigi Cadorna, 33 — 70013 Castellana Grotte (BA)
       </p>
-      <a
-        href={BOOKING_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="font-sans text-sm text-accent hover:text-accent/80 transition-colors"
-      >
-        Prenota su Booking.com &rarr;
-      </a>
-      <a
-        href="https://www.airbnb.it/rooms/1642096504763171753"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="font-sans text-sm text-accent hover:text-accent/80 transition-colors"
-      >
-        Prenota su Airbnb &rarr;
-      </a>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-sans text-sm text-accent hover:text-accent/80 transition-colors"
+        >
+          Prenota su Booking.com &rarr;
+        </a>
+        <a
+          href="https://www.airbnb.it/rooms/1642096504763171753"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-sans text-sm text-accent hover:text-accent/80 transition-colors"
+        >
+          Prenota su Airbnb &rarr;
+        </a>
+        <a
+          href="https://www.instagram.com/_ladolcesosta_?igsh=ajI5YnAxbHd6dmVq"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-sans text-sm text-accent hover:text-accent/80 transition-colors"
+        >
+          Seguici su Instagram &rarr;
+        </a>
+      </div>
     </div>
 
     <!-- Divider -->
